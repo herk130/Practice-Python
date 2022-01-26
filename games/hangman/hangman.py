@@ -1,5 +1,8 @@
 from mimetypes import guess_all_extensions
+from operator import truediv
 import py_compile
+from readline import append_history_file
+from tkinter.tix import Tree
 from words import words
 import random 
 
@@ -28,9 +31,35 @@ def play(word):
                tries -= 1 
                guessed_letters.append(guess)
             else:
-                print("good job,", guess, "is in the word!")       
+                print("good job,", guess, "is in the word!")
+                guessed_letters.append(guess)
+                word_as_list = list(word_completion)
+                indices = [i for i, letter in enumerate(word) if letter == guess]
+                for index in indices:
+                    word_as_list[index] = guess 
+                word_completion = "".join(word_as_list)
+                if "_" not in word_completion
+                   guessed = True        
 
         elif len(guess) == len(word) and guess.isalpha():
+            if guess in guessed_words
+               print("You already guessed the word", guess)
+            elif guess != word:
+                print(guess, "is not the word."
+                tries -= 1
+                guessed_words.append(guessed_words)
+            else: 
+                guess =  True 
+                word_completion = word
+        if guessed:
+            print("Congrats you guessed the word!")
+        else:
+            print("Sorry you ran out of tries. The word was " + word + ". maybe next time!")
+
+
+
+            
+
 
         else:
             print("not a valid guess.")
@@ -44,5 +73,4 @@ def play(word):
 
 
 def display_hangman(tries):
-    stages = 
-             
+    stages =            
